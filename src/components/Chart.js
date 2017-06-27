@@ -8,12 +8,10 @@ class Chart extends React.Component {
     constructor(props) {
         super(props);
     }
-
     static defaultProps = {
         displayTitle: true,
         displayLegend: false
     }
-
     render() {
         return(
             <div className="chart">

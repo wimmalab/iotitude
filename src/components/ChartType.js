@@ -1,18 +1,15 @@
 // libs
 var React = require('react');
 
-class Menu extends React.Component {
+class ChartType extends React.Component {
     constructor(props) {
         super(props);
         this.updateChartType = this.updateChartType.bind(this);
     }
-
-
     updateChartType(e) {
         var chartType = e.target.value;
         this.props.updateChartType(chartType);
     }
-
     render() {
         return(
             <form>
@@ -26,4 +23,4 @@ class Menu extends React.Component {
     }
 }
 
-module.exports = Menu;
+module.exports = ChartType;

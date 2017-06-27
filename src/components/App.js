@@ -5,28 +5,35 @@ var axios = require('axios');
 var config = require('../utils/config');
 //components
 var Chart = require('./Chart');
-var Menu = require('./Menu');
+var ChartType = require('./ChartType');
+var Query = require('./Query');
 
 class App extends React.Component {
-
     constructor(props) {
         super(props);
         this.state = {
+            query: '?limit=1000',
             chartType: 'bar',
             chartData: {}
         }
         this.getData = this.getData.bind(this);
         this.updateChartType = this.updateChartType.bind(this);
+        this.updateQueryType = this.updateQueryType.bind(this);
     }
-
+    updateQueryType(newQueryType) {
+        this.setState({
+            query: newQueryType
+        });
+        this.getData();
+    }
     updateChartType(newChartType) {
         this.setState({
             chartType: newChartType
         });
     }
-
     getData() {
-        axios.get(config.rest_api_url)
+        var query = this.state.query;
+        axios.get(config.rest_api_url + query)
             .then(function (response) {
                 var harmitus1 = 0;
                 var harmitus2 = 0;
@@ -65,15 +72,14 @@ class App extends React.Component {
                 console.log(error);
             });
     }
-
     componentDidMount() {
         this.getData();
     }
-
     render() {
         return (
             <div>
-                <Menu updateChartType={this.updateChartType} />
+                <ChartType updateChartType={this.updateChartType} />
+                <Query updateQueryType={this.updateQueryType} />
                 <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
             </div>
         );
