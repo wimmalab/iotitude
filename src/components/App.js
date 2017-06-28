@@ -24,15 +24,14 @@ class App extends React.Component {
         this.setState({
             query: newQueryType
         });
-        this.getData();
+        this.getData(newQueryType);
     }
     updateChartType(newChartType) {
         this.setState({
             chartType: newChartType
         });
     }
-    getData() {
-        var query = this.state.query;
+    getData(query) {
         axios.get(config.rest_api_url + query)
             .then(function (response) {
                 var harmitus1 = 0;
@@ -61,7 +60,7 @@ class App extends React.Component {
                         datasets: [{
                             label: "Harmitus",
                             data: [harmitus1, harmitus2, harmitus3, harmitus4],
-                            backgroundColor: ['lightgreen', 'lightyellow', 'orange', 'indianred'],
+                            backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336'],
                             borderWidth: 1
                         }]
                     }
@@ -73,13 +72,15 @@ class App extends React.Component {
             });
     }
     componentDidMount() {
-        this.getData();
+        this.getData(this.state.query);
     }
     render() {
         return (
             <div>
+                <form>
                 <ChartType updateChartType={this.updateChartType} />
                 <Query updateQueryType={this.updateQueryType} />
+                </form>
                 <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
             </div>
         );

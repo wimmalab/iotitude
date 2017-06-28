@@ -12,13 +12,14 @@ class ChartType extends React.Component {
     }
     render() {
         return(
-            <form>
-                <select name="chartType" onChange={this.updateChartType}>
-                    <option value="bar">Bar</option>
-                    <option value="pie">Pie</option>
-                    <option value="line">Line</option>
-                </select>
-            </form>
+            <select name="chartType" onChange={this.updateChartType}>
+                <option value="bar">Bar</option>
+                <option value="pie">Pie</option>
+                <option value="doughnut">Doughnut</option>
+                <option value="polar">Polar Area</option>
+                <option value="radar">Radar</option>
+                <option value="line">Line</option>
+            </select>
         );
     }
 }

@@ -1,57 +1,57 @@
 // libs
 var React = require('react');
+var Moment = require('moment');
 
 class Query extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            query: ''
-        }
         this.queryDay = this.queryDay.bind(this);
+        this.queryWeek = this.queryWeek.bind(this);
     }
-
     updateState(value) {
-        this.setState({
-            query: value
-        });
-        console.log(this.state);
         this.props.updateQueryType(value);
     }
-
+    queryMonth() {
+        var today = Moment().format('YYYY-MM-DD');
+        var monthAgo = Moment().subtract(30,'d').format('YYYY-MM-DD');
+        var query = `/range?start=${monthAgo}&end=${today}`;
+        this.updateState(query);
+    }
+    queryWeek() {
+        var today = Moment().format('YYYY-MM-DD');
+        var weekAgo = Moment().subtract(7,'d').format('YYYY-MM-DD');
+        var query = `/range?start=${weekAgo}&end=${today}`;
+        this.updateState(query);
+    }
     queryDay() {
-        // get today in (YYYY-MM-DD)
-        var rightNow = new Date();
-        rightNow.setMinutes(rightNow.getMinutes() - rightNow.getTimezoneOffset());
-        var today = rightNow.toISOString().slice(0,10);
+        var today = Moment().format('YYYY-MM-DD');
         var query = ('/' + today);
         this.updateState(query);
     }
-
     updateQueryType(e) {
         var queryType = e.target.value;
-        console.log(this);
-        if (queryType === 'day') {
-            this.queryDay();
-        } else if (queryType === 'week') {
-            console.log('query: week');
-        } else console.log('Vittu');
-        console.log(queryType);
+        switch(queryType) {
+            case 'day':
+                this.queryDay();
+                break;
+            case 'week':
+                this.queryWeek();
+                break;
+            case 'month':
+                this.queryMonth();
+        }
     }
-
     componentDidMount() {
-        this.queryDay();
-    }
 
+    }
     render() {
         return(
-            <form>
-                <select name="queryType" onChange={this.updateQueryType.bind(this)}>
-                    <option value="default">--</option>
-                    <option value="day">Day</option>
-                    <option value="week">Week</option>
-                    <option value="month">Month</option>
-                </select>
-            </form>
+            <select name="queryType" onChange={this.updateQueryType.bind(this)}>
+                <option value="default">--</option>
+                <option value="day">1 day</option>
+                <option value="week">7 days</option>
+                <option value="month">30 days</option>
+            </select>
         );
     }
 }
