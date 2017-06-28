@@ -6,40 +6,55 @@ var config = require('../utils/config');
 //components
 var Chart = require('./Chart');
 var ChartType = require('./ChartType');
-var Query = require('./Query');
+var QueryType = require('./QueryType');
+var LimitType = require('./LimitType');
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            query: '?limit=1000',
+            query: '?',
             chartType: 'bar',
+            limit: '',
             chartData: {}
         }
         this.getData = this.getData.bind(this);
         this.updateChartType = this.updateChartType.bind(this);
         this.updateQueryType = this.updateQueryType.bind(this);
+        this.updateLimitType = this.updateLimitType.bind(this);
     }
     updateQueryType(newQueryType) {
         this.setState({
             query: newQueryType
         });
-        this.getData(newQueryType);
+        var currentLimit = this.state.limit;
+        this.getData(newQueryType, currentLimit);
     }
     updateChartType(newChartType) {
         this.setState({
             chartType: newChartType
         });
     }
-    getData(query) {
-        axios.get(config.rest_api_url + query)
+    updateLimitType(newLimit) {
+        this.setState({
+            limit: newLimit
+        });
+        var currentQuery = this.state.query;
+        this.getData(currentQuery, newLimit);
+    }
+    getData(query, limit) {
+        if (limit !== undefined) {
+            var apiCall = config.rest_api_url + query + limit
+        } else apiCall = config.rest_api_url + query;
+        console.log(apiCall);
+        axios.get(apiCall)
             .then(function (response) {
                 var harmitus1 = 0;
                 var harmitus2 = 0;
                 var harmitus3 = 0;
                 var harmitus4 = 0;
-                response.data.map(function (x) {
-                    switch(x.harmitusLvl) {
+                response.data.map(function (harmitus) {
+                    switch(harmitus.harmitusLvl) {
                         case 0:
                             harmitus1 += 1;
                             break;
@@ -54,14 +69,14 @@ class App extends React.Component {
                             break;
                     }
                 });
+                var currentTitle = this.state.title;
                 this.setState({
                     chartData: {
                         labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
                         datasets: [{
                             label: "Harmitus",
                             data: [harmitus1, harmitus2, harmitus3, harmitus4],
-                            backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336'],
-                            borderWidth: 1
+                            backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336']
                         }]
                     }
                 });
@@ -72,14 +87,15 @@ class App extends React.Component {
             });
     }
     componentDidMount() {
-        this.getData(this.state.query);
+        this.getData(this.state.query, this.state.limit);
     }
     render() {
         return (
             <div>
                 <form>
-                <ChartType updateChartType={this.updateChartType} />
-                <Query updateQueryType={this.updateQueryType} />
+                    <ChartType updateChartType={this.updateChartType} />
+                    <QueryType updateQueryType={this.updateQueryType} />
+                    <LimitType updateLimitType={this.updateLimitType} />
                 </form>
                 <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
             </div>
