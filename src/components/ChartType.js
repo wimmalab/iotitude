@@ -1,27 +1,32 @@
 // libs
-var React = require('react');
+import React from 'react';
+import { MenuItem, SelectField } from 'material-ui';
 
-class ChartType extends React.Component {
+export default class ChartType extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            value: 'bar'
+        }
         this.updateChartType = this.updateChartType.bind(this);
     }
-    updateChartType(e) {
-        var chartType = e.target.value;
-        this.props.updateChartType(chartType);
+    updateChartType(e, index, value) {
+        this.setState({value});
+        this.props.updateChartType(value);
     }
     render() {
         return(
-            <select name="chartType" onChange={this.updateChartType}>
-                <option value="bar">Bar</option>
-                <option value="pie">Pie</option>
-                <option value="doughnut">Doughnut</option>
-                <option value="polar">Polar Area</option>
-                <option value="radar">Radar</option>
-                <option value="line">Line</option>
-            </select>
+            <SelectField
+                floatingLabelText="Chart"
+                value={this.state.value}
+                onChange={this.updateChartType}>
+                <MenuItem value={'bar'} primaryText="Bar" />
+                <MenuItem value={'pie'} primaryText="Pie" />
+                <MenuItem value={'doughnut'} primaryText="Doughnut" />
+                <MenuItem value={'polar'} primaryText="Polar" />
+                <MenuItem value={'radar'} primaryText="Radar" />
+                <MenuItem value={'line'} primaryText="Line" />
+            </SelectField>
         );
     }
 }
-
-module.exports = ChartType;

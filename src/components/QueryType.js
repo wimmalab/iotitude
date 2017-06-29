@@ -1,10 +1,14 @@
 // libs
-var React = require('react');
-var Moment = require('moment');
+import React from 'react';
+import Moment from 'moment';
+import { MenuItem, SelectField } from 'material-ui';
 
-class QueryType extends React.Component {
+export default class QueryType extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            value: 'default'
+        }
         this.queryDay = this.queryDay.bind(this);
         this.queryWeek = this.queryWeek.bind(this);
     }
@@ -28,9 +32,9 @@ class QueryType extends React.Component {
         var query = ('/' + today + '?');
         this.updateState(query);
     }
-    updateQueryType(e) {
-        var queryType = e.target.value;
-        switch(queryType) {
+    updateQueryType(e, index, value) {
+        this.setState({value});
+        switch(value) {
             case 'default':
                 this.updateState('?');
                 break;
@@ -44,19 +48,17 @@ class QueryType extends React.Component {
                 this.queryMonth();
         }
     }
-    componentDidMount() {
-
-    }
     render() {
         return(
-            <select name="queryType" onChange={this.updateQueryType.bind(this)}>
-                <option value="default">--</option>
-                <option value="day">Today</option>
-                <option value="week">Last 7 days</option>
-                <option value="month">Last 30 days</option>
-            </select>
+            <SelectField
+                floatingLabelText="Time span"
+                value={this.state.value}
+                onChange={this.updateQueryType.bind(this)}>
+                <MenuItem value={'default'} primaryText="--" />
+                <MenuItem value={'day'} primaryText="Today" />
+                <MenuItem value={'week'} primaryText="Last 7 days" />
+                <MenuItem value={'month'} primaryText="Last 30 days" />
+            </SelectField>
         );
     }
 }
-
-module.exports = QueryType;

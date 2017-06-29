@@ -1,55 +1,35 @@
 // libs
-var React = require('react');
+import React from 'react';
+import { MenuItem, SelectField } from 'material-ui';
 
-class LimitType extends React.Component {
+export default class LimitType extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            value: ''
+        }
         this.updateLimitType = this.updateLimitType.bind(this);
     }
-    updateLimitType(e) {
-        var limitType = e.target.value;
-        switch(limitType) {
-            case 'default':
-                limitType = '';
-                break;
-            case '10':
-                limitType = 'limit=10';
-                break;
-            case '50':
-                limitType = 'limit=50';
-                break;
-            case '100':
-                limitType = 'limit=100';
-                break;
-            case '1K':
-                limitType = 'limit=1000';
-                break;
-            case '10K':
-                limitType = 'limit=10000';
-                break;
-            case '50K':
-                limitType = 'limit=50000';
-                break;
-            case '100K':
-                limitType = 'limit=100000';
-                break;
-        }
-        this.props.updateLimitType(limitType);
+    updateLimitType(e, index, value) {
+        this.setState({value});
+        this.props.updateLimitType(value);
     }
     render() {
         return(
-            <select name="limitType" onChange={this.updateLimitType}>
-                <option value="default">--</option>
-                <option value="10">10</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="1K">1 000</option>
-                <option value="10K">10 000</option>
-                <option value="50K">50 000</option>
-                <option value="100K">100 000</option>
-            </select>
+            <SelectField
+                floatingLabelText="Limit inputs"
+                floatingLabelFixed={true}
+                value={this.state.value}
+                onChange={this.updateLimitType}>
+                <MenuItem value={''} primaryText="--" />
+                <MenuItem value={'limit=10'} primaryText="10" />
+                <MenuItem value={'limit=50'} primaryText="50" />
+                <MenuItem value={'limit=100'} primaryText="100" />
+                <MenuItem value={'limit=1000'} primaryText="1 000" />
+                <MenuItem value={'limit=10000'} primaryText="10 000" />
+                <MenuItem value={'limit=50000'} primaryText="50 000" />
+                <MenuItem value={'limit=100000'} primaryText="100 000" />
+            </SelectField>
         );
     }
 }
-
-module.exports = LimitType;

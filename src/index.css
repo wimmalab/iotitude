@@ -1,4 +1,17 @@
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+}
+
 .chart {
     max-width: 800px;
     margin: 50px auto;
+}
+
+.selection-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #fafafa;
+    box-shadow: 2px 2px 7px #424242;
 }

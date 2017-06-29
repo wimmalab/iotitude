@@ -1,16 +1,8 @@
 // libs
-var React = require('react');
-var Bar = require('react-chartjs-2').Bar;
-var Pie = require('react-chartjs-2').Pie;
-var Line = require('react-chartjs-2').Line;
-var Doughnut = require('react-chartjs-2').Doughnut;
-var Radar = require('react-chartjs-2').Radar;
-var Polar = require('react-chartjs-2').Polar;
+import React from 'react';
+import { Bar, Pie, Line, Doughnut, Radar, Polar } from 'react-chartjs-2';
 
-class Chart extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+export default class Chart extends React.Component {
     static defaultProps = {
         displayTitle: true,
         displayLegend: false,
@@ -110,5 +102,3 @@ class Chart extends React.Component {
         );
     }
 }
-
-module.exports = Chart;

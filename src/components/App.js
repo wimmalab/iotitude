@@ -1,15 +1,16 @@
 // libs
-var React = require('react');
-var axios = require('axios');
-// utils
-var config = require('../utils/config');
+import React from 'react';
+import axios from 'axios';
 //components
-var Chart = require('./Chart');
-var ChartType = require('./ChartType');
-var QueryType = require('./QueryType');
-var LimitType = require('./LimitType');
+import Chart from './Chart';
+import ChartType from './ChartType';
+import QueryType from './QueryType';
+import LimitType from './LimitType';
+// import EndPoints from './EndPoints';
+// utils
+import config from '../utils/config';
 
-class App extends React.Component {
+export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -43,9 +44,7 @@ class App extends React.Component {
         this.getData(currentQuery, newLimit);
     }
     getData(query, limit) {
-        if (limit !== undefined) {
-            var apiCall = config.rest_api_url + query + limit
-        } else apiCall = config.rest_api_url + query;
+        var apiCall = config.rest_api_url + query + limit;
         console.log(apiCall);
         axios.get(apiCall)
             .then(function (response) {
@@ -69,7 +68,7 @@ class App extends React.Component {
                             break;
                     }
                 });
-                var currentTitle = this.state.title;
+                // var currentTitle = this.state.title;
                 this.setState({
                     chartData: {
                         labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
@@ -92,15 +91,14 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <form>
+                <form className="selection-form">
                     <ChartType updateChartType={this.updateChartType} />
                     <QueryType updateQueryType={this.updateQueryType} />
                     <LimitType updateLimitType={this.updateLimitType} />
+
                 </form>
                 <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
             </div>
         );
     }
 }
-
-module.exports = App;
