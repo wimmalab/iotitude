@@ -6,7 +6,7 @@ export default class EndPoint extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            value: 'all'
         }
         this.updateEndPoint = this.updateEndPoint.bind(this);
     }
@@ -21,7 +21,7 @@ export default class EndPoint extends React.Component {
                 floatingLabelFixed={true}
                 value={this.state.value}
                 onChange={this.updateEndPoint}>
-                <MenuItem value={''} primaryText="All" />
+                <MenuItem value={'all'} primaryText="All" />
                 <MenuItem value={'9JQgtPwRfHxVUhp12QX/sIVYpa0='} primaryText="1" />
                 <MenuItem value={'ONltbQpsTErfDxfTm92syBU0EMg='} primaryText="2" />
                 <MenuItem value={'nQSFLfSWb9yQt1o2qRRYE8Ct6IQ='} primaryText="3" />

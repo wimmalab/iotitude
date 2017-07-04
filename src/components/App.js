@@ -14,11 +14,12 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
+            responseData: [],
             interval: '',
             query: '?',
             chartType: 'bar',
             limit: '',
-            endpoint: '',
+            endpoint: 'all',
             chartData: {}
         }
         this.getData = this.getData.bind(this);
@@ -27,6 +28,7 @@ export default class App extends React.Component {
         this.updateQueryType = this.updateQueryType.bind(this);
         this.updateLimitType = this.updateLimitType.bind(this);
         this.updateEndPoint = this.updateEndPoint.bind(this);
+        this.displayData = this.displayData.bind(this);
     }
     updateQueryType(newQueryType) {
         this.setState({
@@ -52,45 +54,55 @@ export default class App extends React.Component {
             endpoint: newEndPoint
         });
     }
+    displayData(data) {
+
+        console.log(this.state.endpoint);
+
+        var xData = [];
+        var harmitus1 = 0;
+        var harmitus2 = 0;
+        var harmitus3 = 0;
+        var harmitus4 = 0;
+        data.map(function (harmitus) {
+            if (this.state.endpoint !== 'all' && harmitus.endpoint === this.state.endpoint) {
+                xData.push(harmitus);
+            }
+
+            switch(xData.harmitusLvl) {
+                case 0:
+                    harmitus1 += 1;
+                    break;
+                case 1:
+                    harmitus2 += 1;
+                    break;
+                case 2:
+                    harmitus3 += 1;
+                    break;
+                case 3:
+                    harmitus4 += 1;
+                    break;
+            }
+        }.bind(this));
+        console.log(xData);
+        // console.log(response);
+
+        this.setState({
+            chartData: {
+                labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
+                datasets: [{
+                    label: "Harmitus",
+                    data: [harmitus1, harmitus2, harmitus3, harmitus4],
+                    backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336']
+                }]
+            }
+        });
+    }
     getData(query, limit) {
         var apiCall = config.rest_api_url + query + limit;
         console.log(apiCall);
         axios.get(apiCall)
             .then(function (response) {
-                var harmitus1 = 0;
-                var harmitus2 = 0;
-                var harmitus3 = 0;
-                var harmitus4 = 0;
-                response.data.map(function (harmitus) {
-                    switch(harmitus.harmitusLvl) {
-                        case 0:
-                            harmitus1 += 1;
-                            break;
-                        case 1:
-                            harmitus2 += 1;
-                            break;
-                        case 2:
-                            harmitus3 += 1;
-                            break;
-                        case 3:
-                            harmitus4 += 1;
-                            break;
-                    }
-                });
-
-                // console.log(response);
-
-                this.setState({
-                    chartData: {
-                        labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
-                        datasets: [{
-                            label: "Harmitus",
-                            data: [harmitus1, harmitus2, harmitus3, harmitus4],
-                            backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336']
-                        }]
-                    }
-                });
-                console.log('State after getting data:', this.state);
+                this.displayData(response.data);
             }.bind(this))
             .catch(function (error) {
                 console.log(error);
