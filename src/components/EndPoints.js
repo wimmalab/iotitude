@@ -23,7 +23,6 @@ export default class EndPoints extends React.Component {
                 multiple={true}
                 value={this.state.values}
                 onChange={this.updateEndPoints}>
-                <MenuItem value={''} primaryText="All" />
                 <MenuItem value={1} primaryText="1" />
                 <MenuItem value={2} primaryText="2" />
                 <MenuItem value={3} primaryText="3" />

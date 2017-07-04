@@ -17,7 +17,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{
@@ -31,7 +31,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{
@@ -46,7 +46,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{
@@ -61,7 +61,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{
@@ -76,7 +76,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{
@@ -90,7 +90,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: 'Harmitusmittari',
+                            text: 'Mielialamittari',
                             fontSize: 22
                         },
                         legend:{

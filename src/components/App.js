@@ -6,7 +6,7 @@ import Chart from './Chart';
 import ChartType from './ChartType';
 import QueryType from './QueryType';
 import LimitType from './LimitType';
-// import EndPoints from './EndPoints';
+import EndPoint from './EndPoint';
 // utils
 import config from '../utils/config';
 
@@ -14,15 +14,19 @@ export default class App extends React.Component {
     constructor() {
         super();
         this.state = {
+            interval: '',
             query: '?',
             chartType: 'bar',
             limit: '',
+            endpoint: '',
             chartData: {}
         }
         this.getData = this.getData.bind(this);
+        this.getDataInterval = this.getDataInterval.bind(this);
         this.updateChartType = this.updateChartType.bind(this);
         this.updateQueryType = this.updateQueryType.bind(this);
         this.updateLimitType = this.updateLimitType.bind(this);
+        this.updateEndPoint = this.updateEndPoint.bind(this);
     }
     updateQueryType(newQueryType) {
         this.setState({
@@ -42,6 +46,11 @@ export default class App extends React.Component {
         });
         var currentQuery = this.state.query;
         this.getData(currentQuery, newLimit);
+    }
+    updateEndPoint(newEndPoint) {
+        this.setState({
+            endpoint: newEndPoint
+        });
     }
     getData(query, limit) {
         var apiCall = config.rest_api_url + query + limit;
@@ -68,7 +77,9 @@ export default class App extends React.Component {
                             break;
                     }
                 });
-                // var currentTitle = this.state.title;
+
+                // console.log(response);
+
                 this.setState({
                     chartData: {
                         labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
@@ -85,8 +96,21 @@ export default class App extends React.Component {
                 console.log(error);
             });
     }
+    getDataInterval() {
+        this.getData(this.state.query, this.state.limit);
+        // console.log(this.state.interval);
+    }
     componentDidMount() {
         this.getData(this.state.query, this.state.limit);
+        var dataInterval = setInterval(this.getDataInterval, 5000);
+        // console.log(dataInterval);
+        this.setState({
+            interval: dataInterval
+        });
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.interval);
+        // console.log('clear', this.state.interval);
     }
     render() {
         return (
@@ -95,7 +119,7 @@ export default class App extends React.Component {
                     <ChartType updateChartType={this.updateChartType} />
                     <QueryType updateQueryType={this.updateQueryType} />
                     <LimitType updateLimitType={this.updateLimitType} />
-
+                    <EndPoint updateEndPoint={this.updateEndPoint} />
                 </form>
                 <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
             </div>
