@@ -6,7 +6,7 @@ export default class EndPoint extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 'all'
+            value: 'range?'
         }
         this.updateEndPoint = this.updateEndPoint.bind(this);
     }
@@ -21,14 +21,14 @@ export default class EndPoint extends React.Component {
                 floatingLabelFixed={true}
                 value={this.state.value}
                 onChange={this.updateEndPoint}>
-                <MenuItem value={'all'} primaryText="All" />
-                <MenuItem value={'9JQgtPwRfHxVUhp12QX/sIVYpa0='} primaryText="1" />
-                <MenuItem value={'ONltbQpsTErfDxfTm92syBU0EMg='} primaryText="2" />
-                <MenuItem value={'nQSFLfSWb9yQt1o2qRRYE8Ct6IQ='} primaryText="3" />
-                <MenuItem value={'iGE/C0ew1SRt6Qu0iP3O4nN3Qwc='} primaryText="4" />
-                <MenuItem value={'Nu4W6wHRhTBifmy64ld74EqDWF4='} primaryText="5" />
-                <MenuItem value={'TLYMdLOR9hZ13d4Uq/d0zevYNRg='} primaryText="6" />
-                <MenuItem value={'cksXdpmFk+xWg19kNaaUeM/IAio='} primaryText="7" />
+                <MenuItem value={'range?'} primaryText="All" />
+                <MenuItem value={'endpointrange?endpoint=Nu4W6wHRhTBifmy64ld74EqDWF4%3D&'} primaryText="D404 - D405" />
+                <MenuItem value={'endpointrange?endpoint=9JQgtPwRfHxVUhp12QX/sIVYpa0%3D&'} primaryText="2" />
+                <MenuItem value={'endpointrange?endpoint=ONltbQpsTErfDxfTm92syBU0EMg%3D&'} primaryText="3" />
+                <MenuItem value={'endpointrange?endpoint=nQSFLfSWb9yQt1o2qRRYE8Ct6IQ%3D&'} primaryText="4" />
+                <MenuItem value={'endpointrange?endpoint=iGE/C0ew1SRt6Qu0iP3O4nN3Qwc%3D&'} primaryText="5" />
+                <MenuItem value={'endpointrange?endpoint=TLYMdLOR9hZ13d4Uq/d0zevYNRg%3D&'} primaryText="6" />
+                <MenuItem value={'endpointrange?endpoint=cksXdpmFk+xWg19kNaaUeM/IAio%3D&'} primaryText="7" />
             </SelectField>
         );
     }

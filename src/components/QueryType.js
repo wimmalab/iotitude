@@ -7,7 +7,7 @@ export default class QueryType extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 'default'
+            value: 'week'
         }
         this.queryDay = this.queryDay.bind(this);
         this.queryWeek = this.queryWeek.bind(this);
@@ -18,18 +18,18 @@ export default class QueryType extends React.Component {
     queryMonth() {
         var today = Moment().format('YYYY-MM-DD');
         var monthAgo = Moment().subtract(30,'d').format('YYYY-MM-DD');
-        var query = `/range?start=${monthAgo}&end=${today}&`;
+        var query = `start=${monthAgo}&end=${today}`;
         this.updateState(query);
     }
     queryWeek() {
         var today = Moment().format('YYYY-MM-DD');
         var weekAgo = Moment().subtract(7,'d').format('YYYY-MM-DD');
-        var query = `/range?start=${weekAgo}&end=${today}&`;
+        var query = `start=${weekAgo}&end=${today}`;
         this.updateState(query);
     }
     queryDay() {
         var today = Moment().format('YYYY-MM-DD');
-        var query = ('/' + today + '?');
+        var query = `start=${today}&end=${today}`;
         this.updateState(query);
     }
     updateQueryType(e, index, value) {
@@ -54,9 +54,8 @@ export default class QueryType extends React.Component {
                 floatingLabelText="Time span"
                 value={this.state.value}
                 onChange={this.updateQueryType.bind(this)}>
-                <MenuItem value={'default'} primaryText="--" />
-                <MenuItem value={'day'} primaryText="Today" />
                 <MenuItem value={'week'} primaryText="Last 7 days" />
+                <MenuItem value={'day'} primaryText="Today" />
                 <MenuItem value={'month'} primaryText="Last 30 days" />
             </SelectField>
         );

@@ -24,8 +24,6 @@ export default class ChartType extends React.Component {
                 <MenuItem value={'pie'} primaryText="Pie" />
                 <MenuItem value={'doughnut'} primaryText="Doughnut" />
                 <MenuItem value={'polar'} primaryText="Polar" />
-                <MenuItem value={'radar'} primaryText="Radar" />
-                <MenuItem value={'line'} primaryText="Line" />
             </SelectField>
         );
     }

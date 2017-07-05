@@ -1,6 +1,7 @@
 // libs
 import React from 'react';
 import axios from 'axios';
+import Moment from 'moment';
 //components
 import Chart from './Chart';
 import ChartType from './ChartType';
@@ -16,10 +17,11 @@ export default class App extends React.Component {
         this.state = {
             responseData: [],
             interval: '',
-            query: '?',
+            query: '',
             chartType: 'bar',
             limit: '',
-            endpoint: 'all',
+            endPoint: 'range?',
+            inputAmount: 0,
             chartData: {}
         }
         this.getData = this.getData.bind(this);
@@ -35,7 +37,8 @@ export default class App extends React.Component {
             query: newQueryType
         });
         var currentLimit = this.state.limit;
-        this.getData(newQueryType, currentLimit);
+        var currentEndPoint = this.state.endPoint;
+        this.getData(this.state.endPoint, newQueryType, currentLimit);
     }
     updateChartType(newChartType) {
         this.setState({
@@ -46,29 +49,27 @@ export default class App extends React.Component {
         this.setState({
             limit: newLimit
         });
+        var currentEndPoint = this.state.endPoint;
         var currentQuery = this.state.query;
-        this.getData(currentQuery, newLimit);
+        this.getData(currentEndPoint, currentQuery, newLimit);
     }
     updateEndPoint(newEndPoint) {
+        // var endPoint = 'endpointrange?endpoint=' + newEndPoint + '&';
         this.setState({
-            endpoint: newEndPoint
+            endPoint: newEndPoint
         });
+        var currentQuery = this.state.query;
+        var currentLimit = this.state.limit;
+        this.getData(newEndPoint, currentQuery, currentLimit);
     }
     displayData(data) {
-
-        console.log(this.state.endpoint);
-
-        var xData = [];
+        var inputAmount = data.length;
         var harmitus1 = 0;
         var harmitus2 = 0;
         var harmitus3 = 0;
         var harmitus4 = 0;
-        data.map(function (harmitus) {
-            if (this.state.endpoint !== 'all' && harmitus.endpoint === this.state.endpoint) {
-                xData.push(harmitus);
-            }
-
-            switch(xData.harmitusLvl) {
+        data.map(function (input) {
+            switch(input.harmitusLvl) {
                 case 0:
                     harmitus1 += 1;
                     break;
@@ -83,46 +84,48 @@ export default class App extends React.Component {
                     break;
             }
         }.bind(this));
-        console.log(xData);
-        // console.log(response);
-
         this.setState({
+            inputAmount: inputAmount,
             chartData: {
-                labels: ['Mahtava', 'Ihan jees', 'Harmittaa', 'Vituttaa'],
+                labels: ['Hyvin menee', 'OK', 'Harmittaa', 'Ärsyttää'],
                 datasets: [{
-                    label: "Harmitus",
+                    label: "Mieliala",
                     data: [harmitus1, harmitus2, harmitus3, harmitus4],
                     backgroundColor: ['#4caf50', '#e6ee9c', '#ffeb3b', '#f44336']
                 }]
             }
         });
     }
-    getData(query, limit) {
-        var apiCall = config.rest_api_url + query + limit;
-        console.log(apiCall);
+    getData(endPoint, query, limit) {
+        var apiCall = config.rest_api_url + endPoint + query + limit;
+        console.log('query:', apiCall);
         axios.get(apiCall)
             .then(function (response) {
                 this.displayData(response.data);
+                this.setState({
+                    responseData: response.data
+                });
             }.bind(this))
             .catch(function (error) {
                 console.log(error);
             });
     }
     getDataInterval() {
-        this.getData(this.state.query, this.state.limit);
-        // console.log(this.state.interval);
+        this.getData(this.state.endPoint, this.state.query, this.state.limit);
     }
     componentDidMount() {
-        this.getData(this.state.query, this.state.limit);
+        var today = Moment().format('YYYY-MM-DD');
+        var weekAgo = Moment().subtract(7,'d').format('YYYY-MM-DD');
+        var query = `start=${weekAgo}&end=${today}`;
+        this.getData(this.state.endPoint, query, this.state.limit);
         var dataInterval = setInterval(this.getDataInterval, 5000);
-        // console.log(dataInterval);
         this.setState({
-            interval: dataInterval
+            interval: dataInterval,
+            query: query
         });
     }
     componentWillUnmount() {
         clearInterval(this.state.interval);
-        // console.log('clear', this.state.interval);
     }
     render() {
         return (
@@ -133,7 +136,7 @@ export default class App extends React.Component {
                     <LimitType updateLimitType={this.updateLimitType} />
                     <EndPoint updateEndPoint={this.updateEndPoint} />
                 </form>
-                <Chart chartType={this.state.chartType} chartData={this.state.chartData} />
+                <Chart chartType={this.state.chartType} chartData={this.state.chartData} inputAmount={this.state.inputAmount}/>
             </div>
         );
     }
