@@ -19,6 +19,7 @@ export default class ChartType extends React.Component {
             <SelectField
                 floatingLabelText="Chart"
                 value={this.state.value}
+                style={{width: '200px'}}
                 onChange={this.updateChartType}>
                 <MenuItem value={'bar'} primaryText="Bar" />
                 <MenuItem value={'pie'} primaryText="Pie" />

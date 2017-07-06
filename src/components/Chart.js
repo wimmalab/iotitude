@@ -1,26 +1,38 @@
 // libs
 import React from 'react';
 import { Bar, Pie, Line, Doughnut, Radar, Polar } from 'react-chartjs-2';
+import { Toggle } from 'material-ui';
 
 export default class Chart extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            yAxesToggled: true
+        }
+        this.handleChangeToggle = this.handleChangeToggle.bind(this);
+    }
     static defaultProps = {
         displayTitle: true,
-        displayTitleText: 'Mielialamittari',
         displayLegend: false,
-        legendPosition: 'bottom',
-        beginAtZero: true
+        legendPosition: 'bottom'
+    }
+    handleChangeToggle(event) {
+        this.setState({
+            yAxesToggled: !this.state.yAxesToggled
+        });
     }
     render() {
-        var chartTitle = this.props.displayTitleText + ' - syötteiden määrä: ' + this.props.inputAmount;
+        var chartTitle = this.props.chartTitle + ' - inputs: ' + this.props.inputAmount;
         return(
             <div className="chart">
                 {this.props.chartType === 'bar' &&
+                <div>
                 <Bar
                     data={this.props.chartData}
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: this.props.displayTitleText,
+                            text: this.props.chartTitle,
                             fontSize: 22
                         },
                         legend:{
@@ -29,12 +41,19 @@ export default class Chart extends React.Component {
                         scales: {
                             yAxes: [{
                                 ticks: {
-                                    beginAtZero: this.props.beginAtZero
+                                    beginAtZero: this.state.yAxesToggled
                                 }
                             }]
                         }
                     }}
-                />}
+                />
+                <Toggle
+                    label="Y-axis: 0"
+                    style={{maxWidth: '150px', marginLeft: 'auto', marginRight: 'auto', marginTop: '20px'}}
+                    toggled={this.state.yAxesToggled}
+                    onToggle={this.handleChangeToggle}
+                />
+                </div>}
                 {this.props.chartType === 'pie' &&
                 <Pie
                     data={this.props.chartData}
@@ -97,7 +116,7 @@ export default class Chart extends React.Component {
                     options={{
                         title:{
                             display: this.props.displayTitle,
-                            text: this.props.displayTitleText,
+                            text: this.props.chartTitle,
                             fontSize: 22
                         },
                         legend:{

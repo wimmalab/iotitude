@@ -20,6 +20,7 @@ export default class LimitType extends React.Component {
                 floatingLabelText="Limit inputs"
                 floatingLabelFixed={true}
                 value={this.state.value}
+                style={{width: '200px', marginLeft: '60px'}}
                 onChange={this.updateLimitType}>
                 <MenuItem value={''} primaryText="--" />
                 <MenuItem value={'&limit=10'} primaryText="10" />

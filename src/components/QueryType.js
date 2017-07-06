@@ -53,6 +53,7 @@ export default class QueryType extends React.Component {
             <SelectField
                 floatingLabelText="Time span"
                 value={this.state.value}
+                style={{width: '200px', marginLeft: '60px'}}
                 onChange={this.updateQueryType.bind(this)}>
                 <MenuItem value={'week'} primaryText="Last 7 days" />
                 <MenuItem value={'day'} primaryText="Today" />

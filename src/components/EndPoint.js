@@ -19,10 +19,11 @@ export default class EndPoint extends React.Component {
             <SelectField
                 floatingLabelText="Endpoint"
                 floatingLabelFixed={true}
+                style={{width: '200px', marginLeft: '60px'}}
                 value={this.state.value}
                 onChange={this.updateEndPoint}>
                 <MenuItem value={'range?'} primaryText="All" />
-                <MenuItem value={'endpointrange?endpoint=Nu4W6wHRhTBifmy64ld74EqDWF4%3D&'} primaryText="D404 - D405" />
+                <MenuItem value={'endpointrange?endpoint=Nu4W6wHRhTBifmy64ld74EqDWF4%3D&'} primaryText="Aula" />
                 <MenuItem value={'endpointrange?endpoint=9JQgtPwRfHxVUhp12QX/sIVYpa0%3D&'} primaryText="2" />
                 <MenuItem value={'endpointrange?endpoint=ONltbQpsTErfDxfTm92syBU0EMg%3D&'} primaryText="3" />
                 <MenuItem value={'endpointrange?endpoint=nQSFLfSWb9yQt1o2qRRYE8Ct6IQ%3D&'} primaryText="4" />
