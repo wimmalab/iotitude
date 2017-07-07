@@ -1,5 +1,6 @@
 // libs
 import React from 'react';
+// components
 import { MenuItem, SelectField } from 'material-ui';
 
 export default class LimitType extends React.Component {
@@ -14,13 +15,14 @@ export default class LimitType extends React.Component {
         this.setState({value});
         this.props.updateLimitType(value);
     }
+    /// !!! add <MenuItem /> with corresponding values if adding new limits
     render() {
         return(
             <SelectField
                 floatingLabelText="Limit inputs"
                 floatingLabelFixed={true}
                 value={this.state.value}
-                style={{width: '200px', marginLeft: '60px'}}
+                style={{maxWidth: '200px', marginLeft: '30px', marginRight: '30px'}}
                 onChange={this.updateLimitType}>
                 <MenuItem value={''} primaryText="--" />
                 <MenuItem value={'&limit=10'} primaryText="10" />

@@ -1,6 +1,7 @@
 // libs
 import React from 'react';
 import Moment from 'moment';
+// components
 import { MenuItem, SelectField } from 'material-ui';
 
 export default class QueryType extends React.Component {
@@ -11,10 +12,13 @@ export default class QueryType extends React.Component {
         }
         this.queryDay = this.queryDay.bind(this);
         this.queryWeek = this.queryWeek.bind(this);
+        this.queryMonth = this.queryMonth.bind(this);
+        // !!! *4 bind this
     }
     updateState(value) {
         this.props.updateQueryType(value);
     }
+    // !!! 1. add new method (examples below) if adding new types of time span queries
     queryMonth() {
         var today = Moment().format('YYYY-MM-DD');
         var monthAgo = Moment().subtract(30,'d').format('YYYY-MM-DD');
@@ -32,6 +36,7 @@ export default class QueryType extends React.Component {
         var query = `start=${today}&end=${today}`;
         this.updateState(query);
     }
+    // !!! 2. then add new case with method call
     updateQueryType(e, index, value) {
         this.setState({value});
         switch(value) {
@@ -48,12 +53,13 @@ export default class QueryType extends React.Component {
                 this.queryMonth();
         }
     }
+    // !!! 3. then add <MenuItem/> with corresponding values
     render() {
         return(
             <SelectField
                 floatingLabelText="Time span"
                 value={this.state.value}
-                style={{width: '200px', marginLeft: '60px'}}
+                style={{maxWidth: '200px', marginLeft: '30px', marginRight: '30px'}}
                 onChange={this.updateQueryType.bind(this)}>
                 <MenuItem value={'week'} primaryText="Last 7 days" />
                 <MenuItem value={'day'} primaryText="Today" />

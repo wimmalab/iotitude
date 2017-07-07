@@ -1,5 +1,6 @@
 // libs
 import React from 'react';
+// components
 import { Bar, Pie, Line, Doughnut, Radar, Polar } from 'react-chartjs-2';
 import { Toggle } from 'material-ui';
 
@@ -11,9 +12,11 @@ export default class Chart extends React.Component {
         }
         this.handleChangeToggle = this.handleChangeToggle.bind(this);
     }
+    // !!! set displayTitle to true to display chart title above the chart
     static defaultProps = {
-        displayTitle: true,
+        displayTitle: false,
         displayLegend: false,
+        // !!! changes legend position
         legendPosition: 'bottom'
     }
     handleChangeToggle(event) {
@@ -22,7 +25,7 @@ export default class Chart extends React.Component {
         });
     }
     render() {
-        var chartTitle = this.props.chartTitle + ' - inputs: ' + this.props.inputAmount;
+        var chartTitle = 'Inputs: ' + this.props.inputAmount;
         return(
             <div className="chart">
                 {this.props.chartType === 'bar' &&
@@ -59,7 +62,7 @@ export default class Chart extends React.Component {
                     data={this.props.chartData}
                     options={{
                         title:{
-                            display: this.props.displayTitle,
+                            display: true,
                             text: chartTitle,
                             fontSize: 22
                         },
@@ -87,7 +90,7 @@ export default class Chart extends React.Component {
                     data={this.props.chartData}
                     options={{
                         title:{
-                            display: this.props.displayTitle,
+                            display: true,
                             text: chartTitle,
                             fontSize: 22
                         },
@@ -125,7 +128,8 @@ export default class Chart extends React.Component {
                         }
                     }}
                 />}
-                {this.props.chartType === 'radar' &&
+                {/* to add new types of charts, example below */}
+                {/*this.props.chartType === 'radar' &&
                 <Radar
                     data={this.props.chartData}
                     options={{
@@ -138,28 +142,7 @@ export default class Chart extends React.Component {
                             display: this.props.displayLegend
                         }
                     }}
-                />}
-                {this.props.chartType === 'line' &&
-                <Line
-                    data={this.props.chartData}
-                    options={{
-                        title:{
-                            display: this.props.displayTitle,
-                            text: this.props.displayTitleText,
-                            fontSize: 22
-                        },
-                        legend:{
-                            display: this.props.displayLegend
-                        },
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: this.props.beginAtZero
-                                }
-                            }]
-                        }
-                    }}
-                />}
+                />*/}
             </div>
         );
     }

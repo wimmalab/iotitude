@@ -100,7 +100,6 @@ export default class App extends React.Component {
         this.getData(currentEndPoint, currentQuery, newLimit);
     }
     updateEndPoint(newEndPoint) {
-        // var endPoint = 'endpointrange?endpoint=' + newEndPoint + '&';
         this.setState({
             endPoint: newEndPoint
         });
@@ -129,7 +128,8 @@ export default class App extends React.Component {
                     harmitus1 += 1;
                     break;
             }
-        }.bind(this));
+        });
+        // !!! to add a label to the tooltip (example: "Inputs:"), add below as label value
         this.setState({
             inputAmount: inputAmount,
             chartData: {
@@ -147,13 +147,14 @@ export default class App extends React.Component {
         console.log('query:', apiCall);
         axios.get(apiCall)
             .then(function (response) {
+                console.log(response);
                 this.displayData(response.data);
                 this.setState({
                     responseData: response.data
                 });
             }.bind(this))
             .catch(function (error) {
-                console.log(error);
+                console.log('Response error:', error);
             });
     }
     getDataInterval() {
@@ -164,6 +165,7 @@ export default class App extends React.Component {
         var weekAgo = Moment().subtract(7,'d').format('YYYY-MM-DD');
         var query = `start=${weekAgo}&end=${today}`;
         this.getData(this.state.endPoint, query, this.state.limit);
+        // !!! change interval value (5000) to change frequency of GET calls
         var dataInterval = setInterval(this.getDataInterval, 5000);
         this.setState({
             interval: dataInterval,
@@ -178,20 +180,19 @@ export default class App extends React.Component {
             <div className="wrapper">
                 <header>
                     <img src={Logo} alt={'IoTitude'} />
-                    <form className="selection-form">
-                        <ChartType updateChartType={this.updateChartType} />
-                        <QueryType updateQueryType={this.updateQueryType} />
-                        <LimitType updateLimitType={this.updateLimitType} />
-                        <EndPoint updateEndPoint={this.updateEndPoint} />
-                    </form>
+                    <h1>{this.state.chartTitle}</h1>
                 </header>
                 <SideBar
                     updateColor1={this.updateColor1}
                     updateColor2={this.updateColor2}
                     updateColor3={this.updateColor3}
                     updateColor4={this.updateColor4}
-                    handleSubmit={this.handleSubmit}
-                />
+                    handleSubmit={this.handleSubmit}>
+                    <ChartType updateChartType={this.updateChartType} />
+                    <QueryType updateQueryType={this.updateQueryType} />
+                    <LimitType updateLimitType={this.updateLimitType} />
+                    <EndPoint updateEndPoint={this.updateEndPoint} />
+                </SideBar>
                 <div className="chart-wrapper">
                     <Chart chartTitle={this.state.chartTitle} chartType={this.state.chartType} chartData={this.state.chartData} inputAmount={this.state.inputAmount}/>
                 </div>

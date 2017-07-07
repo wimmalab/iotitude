@@ -3,6 +3,7 @@ import React from 'react';
 // components
 import { MenuItem, SelectField, FlatButton, TextField } from 'material-ui';
 
+// !!! add <MenuItem /> with corresponding values if adding new colors
 const colors = [
     <MenuItem key={1} value={'#F44336'} primaryText="Red" />,
     <MenuItem key={2} value={'#E91E63'} primaryText="Pink" />,
@@ -166,6 +167,7 @@ export default class SideBar extends React.Component {
                     </div>
                 </div>
                 <div className="right-bar" style={{width: this.state.leftNavWidth}}>
+                    {this.props.children}
                     <SelectField
                         floatingLabelText="Color 1"
                         value={this.state.color1}

@@ -1,5 +1,6 @@
 // libs
 import React from 'react';
+// components
 import { MenuItem, SelectField } from 'material-ui';
 
 export default class EndPoint extends React.Component {
@@ -14,16 +15,18 @@ export default class EndPoint extends React.Component {
         this.setState({value});
         this.props.updateEndPoint(value);
     }
+    /// !!! add <MenuItem /> with corresponding values if adding new endpoints
+    /// !!! change primaryText for better names
     render() {
         return(
             <SelectField
                 floatingLabelText="Endpoint"
                 floatingLabelFixed={true}
-                style={{width: '200px', marginLeft: '60px'}}
+                style={{maxWidth: '200px', marginLeft: '30px'}}
                 value={this.state.value}
                 onChange={this.updateEndPoint}>
                 <MenuItem value={'range?'} primaryText="All" />
-                <MenuItem value={'endpointrange?endpoint=Nu4W6wHRhTBifmy64ld74EqDWF4%3D&'} primaryText="Aula" />
+                <MenuItem value={'endpointrange?endpoint=Nu4W6wHRhTBifmy64ld74EqDWF4%3D&'} primaryText="1" />
                 <MenuItem value={'endpointrange?endpoint=9JQgtPwRfHxVUhp12QX/sIVYpa0%3D&'} primaryText="2" />
                 <MenuItem value={'endpointrange?endpoint=ONltbQpsTErfDxfTm92syBU0EMg%3D&'} primaryText="3" />
                 <MenuItem value={'endpointrange?endpoint=nQSFLfSWb9yQt1o2qRRYE8Ct6IQ%3D&'} primaryText="4" />

@@ -19,7 +19,7 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 30px 0 20px;
+    padding: 0 30px 0 30px;
     background-color: #fafafa;
     box-shadow: 2px 2px 7px #BDBDBD;
 }
@@ -27,15 +27,25 @@ header img {
     height: 50px;
     margin-top: 15px;
 }
+header h1 {
+    line-height: 80px;
+    font-size: 44px;
+    font-weight: 300;
+    color: #5cb2e3;
+}
 .chart-wrapper {
     min-height: calc(100vh - 80px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+}
+.chart-wrapper h2 {
+    text-align: center;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 160px;
 }
 .chart {
-    width: 992px;
-    padding-top: 120px;
+    max-width: 992px;
+    padding: 160px 30px 0;
     margin: 0 auto;
 }
 a {
@@ -57,6 +67,7 @@ a:hover {
     border-top: 1px solid #BDBDBD;
     background-color: #fafafa;
     transition: 0.3s ease-in-out;
+    z-index: 1;
 }
 .right-bar {
     position: fixed;
@@ -68,6 +79,7 @@ a:hover {
     width: 0px;
     height: 100%;
     transition: 0.3s ease-in-out;
+    z-index: 1;
 }
 .side-options {
     margin-top: 90px;
