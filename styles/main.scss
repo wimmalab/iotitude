@@ -1,0 +1,383 @@
+/*!
+* Start Bootstrap - Scrolling Nav (http://startbootstrap.com/)
+* Copyright 2013-2016 Start Bootstrap
+* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+*/
+
+// VARIABLES
+$main-light: #fcfafa;
+$main-medium: #d8d8d8;
+$main-dark: #242424;
+$main-color: #74B7DC;
+
+$light-accent: #e6e4e4;
+$medium-accent: #c5c5c5;
+$dark-accent: #444;
+$color-accent: grey;
+
+$shadow: rgba(15, 15, 15, 0.7);
+$light-shadow: rgba(15, 15, 15, 0.4);
+
+// GLOBALS
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    font-family: 'Century Gothic', sans-serif;
+    font-weight: bold;
+    background: url(../img/bg-about.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 2em;
+    padding-top: 1.5em;
+}
+h2 {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 100%;
+}
+
+// NAVBAR
+.navbar-default {
+    background-color: $main-dark;
+    border-color: $dark-accent;
+
+    .navbar-collapse {
+        border-color: $dark-accent;
+    }
+    .navbar-toggle {
+        border: none;
+        color: $main-light;
+        &:hover, &:focus {
+            background-color: transparent;
+        }
+        .icon-bar {
+            background-color: $main-light;
+        }
+    }
+    .navbar-brand {
+        color: $main-light;
+        letter-spacing: 1px;
+        -webkit-transition: color .3s;
+        -moz-transition: color .3s;
+        -o-transition: color .3s;
+        transition: color .3s;
+        &:focus {
+            color: $main-light;
+        }
+        &:hover, &:active {
+            color: $main-color;
+            span {
+                color: $light-accent;
+            }
+        }
+        span {
+            color: $main-color;
+            font-weight: 300;
+            -webkit-transition: color .3s;
+            -moz-transition: color .3s;
+            -o-transition: color .3s;
+            transition: color .3s;
+        }
+    }
+    .navbar-nav {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .navbar-nav > li > a {
+        -webkit-transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        -moz-transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        -o-transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+        color: $main-light;
+        &:focus {
+            color: $light-accent;
+            @media only screen and (min-width: 768px) {
+                color: $main-light;
+            }
+        }
+        &:hover {
+            color: $light-accent;
+            @media only screen and (min-width: 768px) {
+                color: $main-color;
+            }
+        }
+    }
+    .navbar-nav > .active > a {
+        color: $main-dark;
+        background-color: $light-accent;
+        border-left: 3px solid $color-accent;
+        padding-left: 18px;
+        box-shadow: 0 2px 10px $shadow;
+        @media only screen and (min-width: 768px) {
+            color: $main-light;
+            background-color: transparent;
+            border-left: none;
+            padding-left: 15px;
+            box-shadow: 0 -3px 0px $main-color inset;
+        }
+        &:hover, &:focus {
+            color: $main-dark;
+            background-color: $light-accent;
+            border-left: 3px solid $color-accent;
+            padding-left: 18px;
+            box-shadow: 0 2px 10px $shadow;
+            @media only screen and (min-width: 768px) {
+                color: $main-light;
+                background-color: transparent;
+                border-left: none;
+                padding-left: 15px;
+                box-shadow: 0 -3px 0px $main-color inset;
+            }
+        }
+    }
+}
+
+// navbar text
+.button-blog {
+  border: 3px solid white;
+  padding: 0.65em 1.4em;
+  color: $main-light;
+    &:hover {
+        background-color: $main-color;
+      }
+}
+
+
+.landing {
+    background: url(../img/IoTitudebg.png) no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 50px;
+    height: 100vh;
+    overflow: hidden;
+    color: $light-accent;
+    text-shadow: 2px 2px 7px $shadow, -2px -2px 7px $shadow;
+    p {
+        text-align: right;
+    }
+    .logo {
+        background: url(../img/IoTitudebg.png) no-repeat;
+        background-size: cover;
+        min-height: 100vh;
+
+        .smoke {
+            background: url(../img/mysticons_hero_smokes.png) no-repeat;
+            background-size: cover;
+            min-height: 100vh;
+        }
+    }
+}
+
+
+.landing-new {
+  height: 100vh;
+  background: url(../img/IoTitudebg.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+.about, .team, .solution {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $light-accent;
+}
+
+.about{
+}
+
+.solution {
+}
+
+.team {
+  min-height: 100vh;
+  background: url(../img/team.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 10em 0em
+}
+
+.container {
+
+}
+
+.team-images {
+  text-align: center;
+
+  img {
+    width: 100%;
+    filter: grayscale(100%);
+    border: 3px solid white;
+    border-radius: 1000px;
+    transition-duration: 300ms;
+
+    &:hover {
+      filter:none;
+      transform: scale(1.02);
+    }
+  }
+}
+
+.team-member {
+  margin: 1em 1em;
+  width: 20%;
+  display: inline-block;
+}
+
+strong {
+  font-size: 1.3em;
+}
+
+.left, .right, .center {
+  width: 48%;
+  min-height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    max-width: 100%;
+  }
+
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.center {
+  padding: 4em;
+  width: 100%;
+}
+
+.note {
+  padding: 4em;
+  background-color: white;
+  color: #333;
+
+}
+
+
+
+.clear {
+  clear: both;
+}
+
+
+
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width: 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width: 768px) {
+    .navbar {
+        background: transparent;
+        border: none;
+        padding: 20px 0;
+        -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+        transition: background .5s ease-in-out, padding .5s ease-in-out;
+    }
+    .top-nav-collapse {
+        background: $main-dark;
+        padding: 0;
+    }
+    p {
+        font-size: 150%;
+    }
+    h2 {
+        margin-bottom: 40px;
+        font-size: 300%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .landing-new {
+    background: url(../img/IoTitudebg_small.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .button-blog {
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .left, .right, .center {
+    float: none;
+    display: flex;
+    vertical-align: middle;
+    justify-content: center;
+    margin: 2vh auto;
+    width: 95%;
+
+    p {
+      font-size: 1.4em;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 800px;
+    }
+
+  }
+
+  .team-member {
+    margin: auto;
+    width: 75%;
+    display: block;
+    margin-top: 5vh;
+
+    p {
+      font-size: 2em;
+    }
+  }
+
+  .landing-new {
+  }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width: 992px) {
+
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width: 1200px) {
+
+}

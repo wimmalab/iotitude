@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" type="image/png" href="img/fav.png"/>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        $(function() {
+          $.scrollify({
+            section : ".example-classname",
+          });
+        });
+    </script>
+
+    <title>IoTitude</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <!-- Custom styling -->
+    <link rel="stylesheet" href="styles/main.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="50">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand page-scroll" href="#page-top">IoTitude</a>
+            </div>
+
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top" class="page-scroll"></a>
+                    </li>
+                    <li><a href="#About" class="page-scroll">ABOUT</a></li>
+                    <li><a href="#Solution" class="page-scroll">SOLUTION</a></li>
+                    <li><a href="#Team" class="page-scroll">TEAM</a></li>
+                    <li><a href="http://wimmalab.github.io/blog" target="_blank" class="page-scroll"><span class="button-blog">BLOG</span></a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <!-- Landing
+    <section id="landing" class="landing">
+        <div class="logo">
+            <div class="smoke"></div>
+        </div>
+    </section>
+    -->
+
+    <section class="landing-new example-classname">
+    </section>
+    <!-- About -->
+    <section id="About" class="about example-classname">
+      <h1>ABOUT</h1>
+
+      <div class="container">
+        <div class="left note">
+          <p>
+          <strong>We are IoTitude</strong> <br/> a virtual company and we started
+          working at WIMMA Lab on IoTcity2.0 project 15.5.2017. <br/><br/>
+          We consist of seven students from JAMK University of Applied Sciences. <br/><br/>
+        Our goal was to develop an IoT-solution for study purpose.
+        Requirements of the solution were to handle large amounts of various
+        data and the platform to be stable, tested and secure.  <br/>
+          </p>
+        </div>
+
+        <div class="right">
+          <img src="img/iotidudes.jpg" alt="">
+        </div>
+      </div>
+      <!-- clear floats -->
+      <div class="clear"></div>
+
+    </section>
+
+
+    <!-- SOLUTION -->
+    <section id="Solution" class="solution example-classname">
+
+
+      <h1>SOLUTION</h1>
+
+      <div class="container">
+        <div class="right note">
+          <p>
+            <strong>IoTcity 2.0</strong><br/><br/>
+            The first three weeks were spent creating a demo for corporate visitors.
+            We created a physical IoT-device called "Harmitusmittari".
+            It has four buttons, which people can press to express their feelings.
+
+          </p>
+        </div>
+
+        <div class="left">
+          <p>
+            <img src="img/harmi.jpg" alt="">
+          </p>
+        </div>
+
+        <div class="center note">
+          <p>
+          </br>
+          The data from Harmitusmittari was routed through Kaa-platform into Cassandra
+          database. The data was visualized to a Html-page with Zeppelin.</br></br>
+          After the demo, we started to create the industrial version of IoTcity2.0.
+          As a team, we solved all the project's problems step by step and the development
+          was continuous and smooth. We also developed a test environment to run
+          automated tests on the product before updating the production environment.</br></br>
+          Setup documentation for the product can be found from GitLab.
+          There are two different documentations available - for a simple single-node
+          environment and for production environment.
+        </p>
+        </div>
+      </div>
+
+      <!-- clear floats -->
+      <div class="clear"></div>
+
+    </section>
+
+
+    <!-- TEAM -->
+
+
+    <section id="Team" class="team example-classname">
+
+      <h1>IOTITUDE TEAM</h1>
+
+      <div class="container">
+        <div class="team-images">
+          <div class="team-member">
+
+            <img src="img/22.jpg" alt="team-member">
+            <p>
+              Jarmo Luostarinen <br />
+              Project Manager
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/23.jpg" alt="team-member">
+            <p>
+              Lauri Moilanen <br />
+              Junior Developer
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/24.jpg" alt="team-member">
+            <p>
+              Sami Pitkänen <br />
+              Junior Developer
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/25.jpg" alt="team-member">
+            <p>
+              Juho Nissi <br />
+              Junior Developer
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/26.jpg" alt="team-member">
+            <p>
+              Borhan Amini <br />
+              Junior Developer
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/27.jpg" alt="team-member">
+            <p>
+              Harri Jäntti <br />
+              Junior Developer
+            </p>
+          </div>
+
+          <div class="team-member">
+            <img src="img/28.jpg" alt="team-member">
+            <p>
+              Markus Malm <br />
+              Junior Developer
+            </p>
+          </div>
+        </div>
+        </div>
+
+    </section>
+
+    <!-- SCRIPTS -->
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/scroll.min.js"></script>
+
+
+
+
+</body>
+
+</html>
