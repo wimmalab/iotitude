@@ -28,7 +28,7 @@ $light-shadow: rgba(15, 15, 15, 0.4);
 body {
     font-family: 'Century Gothic', sans-serif;
     font-weight: bold;
-    background: url(../img/bg-about.png);
+    background: url(../img/iotitude_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -205,6 +205,7 @@ p {
 }
 
 .solution {
+  padding-bottom: 10vh;
 }
 
 .team {
@@ -248,7 +249,7 @@ strong {
   font-size: 1.3em;
 }
 
-.left, .right, .center {
+.left, .right, .note-center {
   width: 48%;
   min-height: 40vh;
   display: flex;
@@ -261,6 +262,11 @@ strong {
 
 }
 
+.spacer {
+  min-height: 4vh;
+  width: 100%;
+}
+
 .left {
   float: left;
 }
@@ -269,8 +275,7 @@ strong {
   float: right;
 }
 
-.center {
-  padding: 4em;
+.note-center {
   width: 100%;
 }
 
@@ -325,7 +330,7 @@ strong {
 @media only screen and (max-width: 768px) {
 
   .landing-new {
-    background: url(../img/IoTitudebg_small.jpg);
+    background: url(../img/IoTitude_hero_small.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -337,7 +342,7 @@ strong {
     margin: 0;
   }
 
-  .left, .right, .center {
+  .left, .right, .note-center {
     float: none;
     display: flex;
     vertical-align: middle;
