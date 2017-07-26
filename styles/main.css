@@ -11,7 +11,7 @@
 body {
   font-family: 'Century Gothic', sans-serif;
   font-weight: bold;
-  background: url(../img/bg-about.png);
+  background: url(../img/iotitude_bg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center; }
@@ -114,7 +114,7 @@ p {
     background-color: #74B7DC; }
 
 .landing {
-  background: url(../img/mysticons_hero.png) no-repeat;
+  background: url(../img/IoTitudebg.png) no-repeat;
   background-attachment: fixed;
   background-size: cover;
   display: flex;
@@ -128,7 +128,7 @@ p {
   .landing p {
     text-align: right; }
   .landing .logo {
-    background: url(../img/mysticons_hero.png) no-repeat;
+    background: url(../img/IoTitudebg.png) no-repeat;
     background-size: cover;
     min-height: 100vh; }
     .landing .logo .smoke {
@@ -151,6 +151,9 @@ p {
   justify-content: center;
   align-items: center;
   color: #e6e4e4; }
+
+.solution {
+  padding-bottom: 10vh; }
 
 .team {
   min-height: 100vh;
@@ -181,20 +184,27 @@ p {
 strong {
   font-size: 1.3em; }
 
-.left, .right {
+.left, .right, .note-center {
   width: 48%;
   min-height: 40vh;
   display: flex;
   justify-content: center;
   align-items: center; }
-  .left img, .right img {
+  .left img, .right img, .note-center img {
     max-width: 100%; }
+
+.spacer {
+  min-height: 4vh;
+  width: 100%; }
 
 .left {
   float: left; }
 
 .right {
   float: right; }
+
+.note-center {
+  width: 100%; }
 
 .note {
   padding: 4em;
@@ -228,7 +238,7 @@ strong {
     font-size: 300%; } }
 @media only screen and (max-width: 768px) {
   .landing-new {
-    background: url(../img/bg-small.jpg);
+    background: url(../img/IoTitude_hero_small.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat; }
@@ -238,17 +248,17 @@ strong {
     padding: 0;
     margin: 0; }
 
-  .left, .right {
+  .left, .right, .note-center {
     float: none;
     display: flex;
     vertical-align: middle;
     justify-content: center;
     margin: 2vh auto;
     width: 95%; }
-    .left p, .right p {
+    .left p, .right p, .note-center p {
       font-size: 1.4em;
       margin-bottom: 0; }
-    .left img, .right img {
+    .left img, .right img, .note-center img {
       width: 800px; }
 
   .team-member {

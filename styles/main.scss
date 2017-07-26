@@ -215,7 +215,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 10em 0em
+  padding: 2em 0em 5em 0em;
 }
 
 .container {
@@ -329,48 +329,60 @@ strong {
 
 @media only screen and (max-width: 768px) {
 
-  .landing-new {
-    background: url(../img/IoTitude_hero_small.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
 
-  .button-blog {
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-
-  .left, .right, .note-center {
-    float: none;
-    display: flex;
-    vertical-align: middle;
-    justify-content: center;
-    margin: 2vh auto;
-    width: 95%;
-
-    p {
-      font-size: 1.4em;
-      margin-bottom: 0;
+    .note-center {
+      font-size: 1.3em;
     }
 
-    img {
-      width: 800px;
+    .note {
+      padding: 15px;
     }
 
-  }
 
-  .team-member {
-    margin: auto;
-    width: 75%;
-    display: block;
-    margin-top: 5vh;
-
-    p {
-      font-size: 2em;
+    .landing-new {
+      background: url(../img/IoTitude_hero_small.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
-  }
+
+    .button-blog {
+      border: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .left, .right {
+      float: none;
+      display: flex;
+      vertical-align: middle;
+      justify-content: center;
+      margin: 2vh auto;
+      width: 95%;
+
+      p {
+        font-size: 1.3em;
+        margin-bottom: 0;
+      }
+
+      img {
+        width: 800px;
+      }
+
+    }
+
+    .team-member {
+      margin: auto;
+      width: 75%;
+      display: block;
+      margin-top: 5vh;
+
+      p {
+        padding-top: 0.5em;
+        padding-bottom: 1em;
+        font-size: 1.4em;
+      }
+    }
 
   .landing-new {
   }
